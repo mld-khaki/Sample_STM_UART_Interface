@@ -8,8 +8,6 @@ Write your code in this editor and press "Run" button to compile and execute it.
 
 #include <iostream>
 
-#include <STM_UART/STM_UART.hpp>
-
 using namespace std;
 
 STM_UART::STM_UART() 
@@ -22,15 +20,14 @@ STM_UART::~STM_UART()
     
 }
 
-STM_RET_STATUS STM_UART::Open(
-    const char * serial_port
-    unsigned long baudrate) 
+STM_RET_STATUS STM_UART::OOpen(STM_UART_InitTypeDef Config) 
 {
     /*
         Send the required parameters to the implementation 
         baudrate (will be checked to be standard values i.e. 300, 600, 1200, 1800, 2400, 4800, 7200,... 115,200)
+    
     */
-    return Implementation->Open(serial_port, baudrate);
+    return Implementation->Open(Config);
 }
 
 STM_RET_STATUS    STM_UART::isOpen()
@@ -62,3 +59,5 @@ STM_COM_CODE    STM_UART::Wait_SendNextBatch(char * Buffer, uint32_t & BufferLen
 {
     return Implementation->Wait_SendNextBatch(char * Buffer, uint32_t & BufferLen, uint32_t TimeOut_Sec, uint32_t SendPackageSize)
 }
+
+
