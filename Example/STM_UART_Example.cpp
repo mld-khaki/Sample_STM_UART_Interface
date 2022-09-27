@@ -22,11 +22,15 @@ void main()
   UARTConf.StopBits = 1;
   UARTConf.Parity = true;
 
-  if (testUART.Open(UARTConf) == STM_UART_STATUS_OPEN)
+  if (testUART.Open(UARTConf) == STD_COM_CODE::STM_UART_STATUS_OPEN)
   {
     for (auto iCtr = 1; iCtr < 100; iCtr++)
     {
+       // send and receive data here...
     }
   }
-  
+  else
+  {
+      // Check for the errors here
+  }
 }
